@@ -36,7 +36,7 @@ This package can help you with
 Use [composer](https://getcomposer.org/) dependency manager to install `jaffran-laravel-tools`
 
 ```
-composer require Jaffran/jaffran-laravel-tools
+composer require jaffran/laravel-tools
 ```
 
 don't forget to publish the config file by running
