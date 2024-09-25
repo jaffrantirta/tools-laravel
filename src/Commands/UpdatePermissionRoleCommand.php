@@ -14,14 +14,14 @@ class UpdatePermissionRoleCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'jaffran-permission-role:sync';
+    protected $signature = 'jaffran-permission-role:sync {guard=web}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'sync role permissions based on the config file';
+    protected $description = 'Sync role permissions based on the config file for the specified guard';
 
     /**
      * All Roles in database
@@ -31,7 +31,7 @@ class UpdatePermissionRoleCommand extends Command
     protected $allRoles;
 
     /**
-     * All permission in database
+     * All permissions in database
      *
      * @var Collection
      */
@@ -44,29 +44,37 @@ class UpdatePermissionRoleCommand extends Command
      */
     public function handle()
     {
+        // Get the guard from the command argument
+        $guard = $this->argument('guard');
+
         $permissions = config('LaravelTools.available_permissions');
 
-        $this->allPermissions = Permission::all();
-        $this->allRoles = Role::all();
+        $this->allPermissions = Permission::where('guard_name', $guard)->get();
+        $this->allRoles = Role::where('guard_name', $guard)->get();
 
-        $this->insertMissingRoles($permissions);
+        // Insert missing roles for the given guard
+        $this->insertMissingRoles($permissions, $guard);
 
-        // refresh roles
-        $this->allRoles = Role::all();
+        // Refresh roles
+        $this->allRoles = Role::where('guard_name', $guard)->get();
 
         foreach ($permissions as $permission) {
             $permissionModel = $this->allPermissions->where('name', $permission['name'])->first();
+
             if (!$permissionModel) {
-                $this->line('permission not found, creating permission ' . $permission['name'] . '...');
-                $permissionModel = Permission::create(['name' => $permission['name']]);
-                $this->line('permission created!');
+                $this->line("Permission not found, creating permission '{$permission['name']}' for guard '{$guard}'...");
+                $permissionModel = Permission::create(['name' => $permission['name'], 'guard_name' => $guard]);
+                $this->line('Permission created!');
             }
+
             $roles = $permission['roles'];
             $roleModels = $this->allRoles->whereIn('name', $roles)->pluck('name')->toArray();
+
             if ($roleModels == null) {
-                $this->warn('role is not found when searching for permission ' . $permission['name']);
+                $this->warn("Role not found when searching for permission '{$permission['name']}'");
             }
-            $this->line('syncing role for permission ' . $permissionModel->name);
+
+            $this->line("Syncing roles for permission '{$permissionModel->name}' for guard '{$guard}'");
             $permissionModel->syncRoles($roleModels);
         }
 
@@ -74,22 +82,32 @@ class UpdatePermissionRoleCommand extends Command
         return Command::SUCCESS;
     }
 
-    function insertMissingRoles(array $configRoles): void
+    /**
+     * Insert missing roles for the given guard.
+     *
+     * @param array $configRoles
+     * @param string $guard
+     * @return void
+     */
+    protected function insertMissingRoles(array $configRoles, string $guard): void
     {
-        $missingRoles = collect($configRoles)->pluck('roles')->flatten()->unique()->diff($this->allRoles->pluck('name'));
+        $missingRoles = collect($configRoles)->pluck('roles')->flatten()->unique()->diff(
+            $this->allRoles->pluck('name')
+        );
+
         if ($missingRoles->count() > 0) {
             $newRoles = [];
             foreach ($missingRoles as $missingRole) {
-                $this->line('found new role ' . $missingRole);
+                $this->line("Found new role '{$missingRole}' for guard '{$guard}'");
                 $newRoles[] = [
                     'name' => $missingRole,
-                    'guard_name' => 'api',
+                    'guard_name' => $guard,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
             }
             Role::insert($newRoles);
-            $this->info('added new ' . count($newRoles) . ' roles');
+            $this->info("Added new " . count($newRoles) . " roles for guard '{$guard}'");
         }
     }
 }
