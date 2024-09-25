@@ -1,9 +1,9 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Queries\Customs;
+namespace Jaffran\LaravelTools\Queries\Customs;
 
 use Illuminate\Database\Eloquent\Builder;
-use Jaffran\PeddosLaravelTools\Datas\LatLng;
+use Jaffran\LaravelTools\Datas\LatLng;
 use Spatie\QueryBuilder\Sorts\Sort;
 
 class DistanceSort implements Sort

@@ -1,25 +1,25 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools;
+namespace Jaffran\LaravelTools;
 
 use Illuminate\Support\ServiceProvider;
-use Jaffran\PeddosLaravelTools\Commands\GenerateActionCommand;
-use Jaffran\PeddosLaravelTools\Commands\GenerateCrudCommand;
-use Jaffran\PeddosLaravelTools\Commands\GenerateEnumCommand;
-use Jaffran\PeddosLaravelTools\Commands\GenerateQueryCommand;
-use Jaffran\PeddosLaravelTools\Commands\UpdatePermissionRoleCommand;
+use Jaffran\LaravelTools\Commands\GenerateActionCommand;
+use Jaffran\LaravelTools\Commands\GenerateCrudCommand;
+use Jaffran\LaravelTools\Commands\GenerateEnumCommand;
+use Jaffran\LaravelTools\Commands\GenerateQueryCommand;
+use Jaffran\LaravelTools\Commands\UpdatePermissionRoleCommand;
 
-class PeddosLaravelToolsServiceProvider extends ServiceProvider
+class LaravelToolsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
         // config
-        $this->publishes([__DIR__ . '/../config/peddoslaraveltools.php' => config_path('peddoslaraveltools.php')], 'peddos-laravel-tools-config');
+        $this->publishes([__DIR__ . '/../config/LaravelTools.php' => config_path('LaravelTools.php')], 'jaffran-laravel-tools-config');
 
         // migrations
         $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations')
-        ], 'peddos-laravel-tools-migration');
+        ], 'jaffran-laravel-tools-migration');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {

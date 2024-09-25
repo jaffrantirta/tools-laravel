@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Queries;
+namespace Jaffran\LaravelTools\Queries;
 
 use Spatie\QueryBuilder\QueryBuilder;
 use Exception;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Models;
+namespace Jaffran\LaravelTools\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

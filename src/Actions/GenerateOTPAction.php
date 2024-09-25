@@ -1,8 +1,8 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Actions;
+namespace Jaffran\LaravelTools\Actions;
 
-use Jaffran\PeddosLaravelTools\Models\Otp;
+use Jaffran\LaravelTools\Models\Otp;
 
 class GenerateOTPAction
 {

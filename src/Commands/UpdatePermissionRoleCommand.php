@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Commands;
+namespace Jaffran\LaravelTools\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
@@ -44,7 +44,7 @@ class UpdatePermissionRoleCommand extends Command
      */
     public function handle()
     {
-        $permissions = config('peddoslaraveltools.available_permissions');
+        $permissions = config('LaravelTools.available_permissions');
 
         $this->allPermissions = Permission::all();
         $this->allRoles = Role::all();

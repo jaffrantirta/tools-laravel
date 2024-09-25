@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Traits;
+namespace Jaffran\LaravelTools\Traits;
 
 // use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;

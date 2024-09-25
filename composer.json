@@ -1,5 +1,5 @@
 {
-  "name": "jaffran/jaffran-laravel-tools",
+  "name": "jaffran/laravel-tools",
   "description": "tools for laravel development",
   "require": {
     "spatie/laravel-permission": "^6.0",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Jaffran\\PeddosLaravelTools\\": "src/"
+      "Jaffran\\LaravelTools\\": "src/"
     }
   },
   "authors": [
@@ -24,7 +24,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Jaffran\\PeddosLaravelTools\\PeddosLaravelToolsServiceProvider"
+        "Jaffran\\LaravelTools\\LaravelToolsServiceProvider"
       ]
     }
   }

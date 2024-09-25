@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Datas;
+namespace Jaffran\LaravelTools\Datas;
 
 use Spatie\LaravelData\Data;
 

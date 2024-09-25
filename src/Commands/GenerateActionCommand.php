@@ -1,9 +1,9 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Commands;
+namespace Jaffran\LaravelTools\Commands;
 
 use Illuminate\Console\Command;
-use Jaffran\PeddosLaravelTools\Actions\GenerateFileFromStubAction;
+use Jaffran\LaravelTools\Actions\GenerateFileFromStubAction;
 use Exception;
 
 class GenerateActionCommand extends Command

@@ -1,4 +1,4 @@
-# Peddos Laravel Tools
+# jaffran Laravel Tools
 
 A package for laravel that a compilation of tools for easy laravel development, this package contains external packages from [Spatie](https://spatie.be/) (the best laravel package developer!)
 
@@ -33,16 +33,16 @@ This package can help you with
 
 ## Installation
 
-Use [composer](https://getcomposer.org/) dependency manager to install `peddos-laravel-tools`
+Use [composer](https://getcomposer.org/) dependency manager to install `jaffran-laravel-tools`
 
 ```
-composer require Jaffran/peddos-laravel-tools
+composer require Jaffran/jaffran-laravel-tools
 ```
 
 don't forget to publish the config file by running
 
 ```
-php artisan vendor:publish --tag=peddos-laravel-tools-config
+php artisan vendor:publish --tag=jaffran-laravel-tools-config
 ```
 
 also publish spatie permissions config and migration
@@ -71,12 +71,12 @@ QueryBuilder::for(Model::class)
     ->get();
 ```
 
-This is fine and good... until you need a lot more filtering possibilities, then adding sorting and includes to the equation, this can quickly clutter your controller, so we can move the querying part to seperate class on their own, you can do this by creating a new class that extends `Jaffran\PeddosLaravelTools\Queries\PaginatedQuery` , I usually create a folder called `Queries` and put all my query class there.
+This is fine and good... until you need a lot more filtering possibilities, then adding sorting and includes to the equation, this can quickly clutter your controller, so we can move the querying part to seperate class on their own, you can do this by creating a new class that extends `Jaffran\LaravelTools\Queries\PaginatedQuery` , I usually create a folder called `Queries` and put all my query class there.
 
 Now all you need to do is fill the filtering and which Model will it query from like
 
 ```php
-use Jaffran\PeddosLaravelTools\Queries\PaginatedQuery;
+use Jaffran\LaravelTools\Queries\PaginatedQuery;
 
 class UserQuery extends PaginatedQuery
 {
@@ -146,10 +146,10 @@ paginate? did the function say paginate? yes, it did, we also has added page lim
 finally now you can do the filtering like what you usually do in laravel-query-builder
 
 ```
-/user?filter[name]=peddos&sort=name&append[]=phone&limit=10
+/user?filter[name]=jaffran&sort=name&append[]=phone&limit=10
 ```
 
-this will filter the user where the name is `peddos` and sorted by `name` and appending `phone` and the a single page will only contains `10` users
+this will filter the user where the name is `jaffran` and sorted by `name` and appending `phone` and the a single page will only contains `10` users
 
 It Works!
 
@@ -159,7 +159,7 @@ To generate an OTP the package using `Action` class which basically just a class
 to read more about action you might want to read [Generating Actions](#Generating-Actions)
 
 ```php
-use Jaffran\PeddosLaravelTools\Actions\GenerateOTPAction;
+use Jaffran\LaravelTools\Actions\GenerateOTPAction;
 
 (new GenerateOTPAction)->execute(
     4, //number of seed
@@ -199,7 +199,7 @@ now with this package this is way simpler and easier.
 first of you need to prepare your model like so :
 
 ```php
-use Jaffran\PeddosLaravel\Tools\HasSingleImage;
+use Jaffran\jaffranLaravel\Tools\HasSingleImage;
 use Spatie\MediaLibrary\HasMedia;
 
 class Article implements HasMedia{
@@ -259,7 +259,7 @@ IT WORKS!
 This package can help you sync role and permission and its quite easy, first of all you need to publish the config file if you haven't by running the command :
 
 ```
-php artisan vendor:publish --tag=peddos-laravel-tools-config
+php artisan vendor:publish --tag=jaffran-laravel-tools-config
 ```
 
 Oh right, don't forget to run the migration
@@ -268,7 +268,7 @@ Oh right, don't forget to run the migration
 php artisan migrate
 ```
 
-Now there's should be a file called `peddoslaraveltools.php` in your config directory. all you have to do now is write the permission and the role that are allowed to access it inside the `available_permissions` array, the config file should looks like this :
+Now there's should be a file called `LaravelTools.php` in your config directory. all you have to do now is write the permission and the role that are allowed to access it inside the `available_permissions` array, the config file should looks like this :
 
 ```php
 'available_permissions' => [
@@ -286,7 +286,7 @@ Now there's should be a file called `peddoslaraveltools.php` in your config dire
 Once you've done that now you can sync the permission and the role with the command
 
 ```
-php artisan peddos-permission-role:sync
+php artisan jaffran-permission-role:sync
 ```
 
 This command will create the permission and the role if its not yet in the database so you don't need to worry about it!

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Middleware;
+namespace Jaffran\LaravelTools\Middleware;
 
 use Illuminate\Http\Request;
 use Closure;

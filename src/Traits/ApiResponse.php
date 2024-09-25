@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Traits;
+namespace Jaffran\LaravelTools\Traits;
 
 use Illuminate\Http\Response;
 

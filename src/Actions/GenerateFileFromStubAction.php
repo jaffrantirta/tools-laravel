@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Actions;
+namespace Jaffran\LaravelTools\Actions;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;

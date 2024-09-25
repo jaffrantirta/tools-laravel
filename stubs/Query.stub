@@ -6,7 +6,7 @@ use App\Models\{Name};
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedInclude;
 use Spatie\QueryBuilder\AllowedSort;
-use Jaffran\PeddosLaravelTools\Queries\PaginatedQuery;
+use Jaffran\LaravelTools\Queries\PaginatedQuery;
 
 class {Name}Query extends PaginatedQuery
 {

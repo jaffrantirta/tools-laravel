@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Actions;
+namespace Jaffran\LaravelTools\Actions;
 
 use App\Models\User;
 

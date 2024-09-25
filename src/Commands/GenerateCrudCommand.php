@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaffran\PeddosLaravelTools\Commands;
+namespace Jaffran\LaravelTools\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
