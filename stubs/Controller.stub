@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\{Name}StoreRequest;
+use App\Http\Requests\{Name}UpdateRequest;
+use App\Models\{Name};
+use App\Queries\{Name}Query;
+
+class {Name}Controller extends Controller
+{
+    public function index({Name}Query ${name}Query)
+    {
+        return ${name}Query->includes()->filterSortPaginateWithAppend();
+    }
+
+    public function store({Name}StoreRequest $request)
+    {
+        return {Name}::create($request->validated());
+    }
+
+    public function show(${name}, {Name}Query $query)
+    {
+        return $query->includes()->findAndAppend(${name});
+    }
+
+    public function update({Name}UpdateRequest $request, {Name} ${name})
+    {
+        ${name}->update($request->validated());
+        return ${name};
+    }
+
+    public function destroy({Name} ${name})
+    {
+        ${name}->delete();
+        return response()->noContent();
+    }
+}
