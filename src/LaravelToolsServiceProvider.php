@@ -14,7 +14,7 @@ class LaravelToolsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // config
-        $this->publishes([__DIR__ . '/../config/LaravelTools.php' => config_path('LaravelTools.php')], 'jaffran-laravel-tools-config');
+        $this->publishes([__DIR__ . '/../config/jaffranlaraveltools.php' => config_path('LaravelTools.php')], 'jaffran-laravel-tools-config');
 
         // migrations
         $this->publishes([
