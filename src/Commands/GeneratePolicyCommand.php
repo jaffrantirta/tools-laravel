@@ -13,7 +13,7 @@ class GenerateQueryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'jaffran make:policy {name}';
+    protected $signature = 'jaffran-make:policy {name}';
 
     /**
      * The console command description.
