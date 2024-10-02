@@ -7,6 +7,7 @@ use Jaffran\LaravelTools\Commands\GenerateActionCommand;
 use Jaffran\LaravelTools\Commands\GenerateCrudCommand;
 use Jaffran\LaravelTools\Commands\GenerateEnumCommand;
 use Jaffran\LaravelTools\Commands\GenerateQueryCommand;
+use Jaffran\LaravelTools\Commands\GeneratePolicyCommand;
 use Jaffran\LaravelTools\Commands\UpdatePermissionRoleCommand;
 
 class LaravelToolsServiceProvider extends ServiceProvider
@@ -27,6 +28,7 @@ class LaravelToolsServiceProvider extends ServiceProvider
                 GenerateCrudCommand::class,
                 UpdatePermissionRoleCommand::class,
                 GenerateQueryCommand::class,
+                GeneratePolicyCommand::class,
                 GenerateActionCommand::class,
                 GenerateEnumCommand::class,
             ]);
