@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Jaffran\LaravelTools\Actions\GenerateFileFromStubAction;
 use Exception;
 
-class GenerateQueryCommand extends Command
+class GeneratePolicyCommand extends Command
 {
     /**
      * The name and signature of the console command.
